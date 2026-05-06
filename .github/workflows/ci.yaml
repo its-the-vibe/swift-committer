@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    # Note: building requires macOS 26 with Xcode 26+ (FoundationModels framework).
+    # Use macos-latest to get the most recent available runner; update to a macOS 26
+    # runner (e.g. macos-26) once it becomes available on GitHub-hosted runners.
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show environment
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Build
+        run: swift build -c release
