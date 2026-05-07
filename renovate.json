@@ -1,0 +1,15 @@
+{
+  "extends": ["config:recommended"],
+  "enabledManagers": ["swift"],
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "semanticCommits": "enabled",  
+  "packageRules": [
+    {
+      "matchManagers": ["swift"],
+      "groupName": "swiftpm-dependencies"
+    }
+  ],
+  "prConcurrentLimit": 5,
+  "dependencyDashboard": false
+}
